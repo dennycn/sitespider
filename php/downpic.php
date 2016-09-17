@@ -1,76 +1,53 @@
 <?php
-
-header("Content-Type:text/html;charset=utf-8");
-ini_set('max_execution_time', 86400 * 30);//ÉèÖÃÊ±¼ä£¬ÒÔÃâ³¬Ê±ÖÐ¶Ï
-
 /*
 More & Original PHP Framwork
 Copyright (c) 2007 - 2008 IsMole Inc.
 Author: kimi
-Documentation: ÏÂÔØÑùÊ½ÎÄ¼þÖÐµÄÍ¼Æ¬£¬Ë®Ë®×¨ÓÃ°ÇÆ¤¹¤¾ß
+Documentation: ä¸‹è½½æ ·å¼æ–‡ä»¶ä¸­çš„å›¾ç‰‡ï¼Œæ°´æ°´ä¸“ç”¨æ‰’çš®å·¥å…·
 from: http://js8.in/586.html
 */
+
+header("Content-Type:text/html;charset=utf-8");
+ini_set('max_execution_time', 86400 * 30);//è®¾ç½®æ—¶é—´ï¼Œä»¥å…è¶…æ—¶ä¸­æ–­
+
+
 function getCSSImage($file, $pattern)
-	//$file = 'images/style.css';
+    //$file = 'images/style.css';
     //$pattern = "/url\((.*)\)/"
-	// note ÉèÖÃPHP³¬Ê±Ê±¼ä
-	set_time_limit(0);
+    set_time_limit(0);   //è®¾ç½®PHPè¶…æ—¶æ—¶é—´
 
-	//note È¡µÃÑùÊ½ÎÄ¼þÄÚÈÝ
-	$styleFileContent = file_get_contents($file);
+    //note å–å¾—æ ·å¼æ–‡ä»¶å†…å®¹
+    $styleFileContent = file_get_contents($file);
 
-	//note Æ¥Åä³öÐèÒªÏÂÔØµÄURLµØÖ·
-	preg_match_all($pattern, $styleFileContent, $imagesURLArray);
+    //note åŒ¹é…å‡ºéœ€è¦ä¸‹è½½çš„URLåœ°å€
+    preg_match_all($pattern, $styleFileContent, $imagesURLArray);
 
-	//note Ñ­»·ÐèÒªÏÂÔØµÄµØÖ·£¬Öð¸öÏÂÔØ
-	$imagesURLArray = array_unique($imagesURLArray[1]);
-	foreach($imagesURLArray as $imagesURL) {
-		file_put_contents(basename($imagesURL), file_get_contents($imagesURL));
+    //note å¾ªçŽ¯éœ€è¦ä¸‹è½½çš„åœ°å€ï¼Œé€ä¸ªä¸‹è½½
+    $imagesURLArray = array_unique($imagesURLArray[1]);
+    foreach($imagesURLArray as $imagesURL) {
+        file_put_contents(basename($imagesURL), file_get_contents($imagesURL));
 }
-
 
 function getImage($url,$filename="") {
-	if($url=="") return false;
+    if($url=="") return false;
 
-	if($filename=="") {
-	$ext=strrchr($url,".");
-	if($ext!=".gif" && $ext!=".jpg" && $ext!=".png") return false;
-	$filename=date("YmdHis").$ext;
-	}
+    if($filename=="") {
+        $ext=strrchr($url,".");
+        if($ext!=".gif" && $ext!=".jpg" && $ext!=".png") return false;
+        $filename=date("YmdHis").$ext;
+    }
 
-	ob_start();
-	readfile($url);
-	$img = ob_get_contents();
-	ob_end_clean();
-	$size = strlen($img);
+    ob_start();
+    readfile($url);
+    $img = ob_get_contents();
+    ob_end_clean();
+    $size = strlen($img);
 
-	$fp2=@fopen($filename, "a");
-	fwrite($fp2,$img);
-	fclose($fp2);
+    $fp2=@fopen($filename, "a");
+    fwrite($fp2,$img);
+    fclose($fp2);
 
-	return $filename;
-} 
-
-
-$url='http://casarteshoot.sinaapp.com/daochupic';//¶ÁÈ¡Í¼Æ¬µØÖ·
-$curl=curl_init();//³õÊ¼»¯curl
-
-/*ÉèÖÃÑ¡Ïî*/
-curl_setopt($curl,CURLOPT_URL,$url);
-curl_setopt($curl,CURLOPT_RETURNTRANSFER,1);
-curl_setopt($curl, CURLOPT_FOLLOWLOCATION, TRUE);
-curl_setopt($curl, CURLOPT_USERAGENT, "Mozilla/5.0 (Windows NT 6.1; WOW64; rv:20.0) Gecko/20100101 Firefox/20.0");
-
-$data=curl_exec($curl);//Ö´ÐÐ²¢»ñÈ¡htmlÄÚÈÝ
-$data=json_decode($data);//×ª»¯Êý¾Ý¸ñÊ½£¨$urlÊä³öµÄÊÇjson¸ñÊ½£©
-curl_close($curl);//ÊÍ·Å¾ä±ú
-$i=0;
-foreach($data as $o){
-    $i++;
-    $name=$o->uid;
-    $time=$o->time;
-    getImage($o->url,'./mypic4/'.$name.'_'.$time.'.jpg');//±£´æµ½Ö¸¶¨ÎÄ¼þ¼ÐÖÐ
+    return $filename;
 }
-
 
 ?>

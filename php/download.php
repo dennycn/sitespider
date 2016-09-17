@@ -2,111 +2,147 @@
 /**
 @author: denny
 @date: 2011-8-23
-@function: file_get_contents, curl, fopen/fread, fsockopen/fwrite
-@library: 
-    simple_html_dom.php 
-    Snoopy.class.php  :fetch() fetchtext() fetchlinks() 
-@note: 
+@origin function: curl, socket, fopen/fread, fsockopen/fwrite, file_get_contents
+@function: request_by_fileio/request_by_socket/request_by_curl/request_by_file/request_by_file2
+@library:
+    simple_html_dom.php
+    Snoopy.class.php  :fetch() fetchtext() fetchlinks()
+@note:
 **/
 
 ini_set("max_execution_time", 2);
 
-//brief:  download url
-//note: file_get_contents/fopen need support allow_url_fopen, which set in php.ini
-//	allow_url_fopen = On
-// method 1: file_get_contents
 $url = "http://www.phpzixue.cn";
-$contents = file_get_contents($url);
-// if messycode, use below
-//$getcontent = iconv("gb2312", "utf-8",$contents);
-echo $contents;
 
-
-// method 2: curl
-// note: curl need support curl library.
-$url="http://www.google.cn/";
-// create a new curl resource
-$ch = curl_init();
-// set URL and other appropriate options
-curl_setopt($ch, CURLOPT_URL, $url);
-curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
-curl_setopt($ch, CURLOPT_TIMEOUT, 1);
-// grab URL, and return output
-$output = curl_exec($ch);
-// close curl resource, and free up system resources
-curl_close($ch);
-// replace ¡®Google¡¯ with ¡®PHPit¡¯
-$output = str_replace('Google', 'denny workshop', $output);
-// print output
-echo $output;
-
-
-// method 3: fopen->fread->fclose
-$url = "http://www.phpzixue.cn";
-$handle = fopen ($url, "rb");
-$contents = "";
-do {
-    $data = fread($handle, 1024);
-    if (strlen($data) == 0) {
-        break;
-    }
-    $contents .= $data;
-} while (true);
-fclose ($handle);
-echo $contents;
-
-
-//method 4: fsockopen
-$fp = fsockopen("www.example.com", 80, $errno, $errstr, 30);
-if (!$fp) {
-    echo "$errstr ($errno)<br />\n";
-} else {
-    $out = "GET / HTTP/1.1\r\n";
-    $out .= "Host: www.example.com\r\n";
-    $out .= "Connection: Close\r\n\r\n";
-
-    fwrite($fp, $out);
-    while (!feof($fp)) {
-        echo fgets($fp, 128);
-    }
-    fclose($fp);
+/**
+ * request_by_fileio~~
+ * @called: fopen->fread->fclose
+ * @example:
+    $post_string = "app=socket&version=beta";
+    request_by_socket('facebook.cn','/restServer.php', $post_string);
+ */
+function request_by_fileio($url)
+{
+    $handle = fopen ($url, "rb");
+    $contents = "";
+    do {
+        $data = fread($handle, 1024);
+        if (strlen($data) == 0) {
+            break;
+        }
+        $contents .= $data;
+    } while (true);
+    fclose ($handle);
+    return $contents;
 }
 
 /**
-@name: zhoz_get_contents
-@date: 2011-8-11
-**/
-function curl_get_content($url, $second = 5) {         
-    $ch = curl_init();         
-    curl_setopt($ch, CURLOPT_URL, $url);         
-    curl_setopt($ch, CURLOPT_HEADER, 0);         
-    curl_setopt($ch, CURLOPT_TIMEOUT, $second);         
-    curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);         
-    
-    $content = curl_exec($ch);         
-    curl_close($ch);         
-    return $content;         
-} 
+ * request_by_socket~~Socketç‰ˆæœ¬
+ * @called: fsockopen
+ * @example:
+    $post_string = "app=socket&version=beta";
+    request_by_socket('facebook.cn','/restServer.php', $post_string);
+ */
+function request_by_socket($url, $remote_path, $post_string, $port = 80, $timeout = 30)
+{
+    $socket = fsockopen($url, $port, $errno, $errstr, $timeout);
+    if (!$socket) die("$errstr($errno)");
+
+    fwrite($socket, "POST $remote_path HTTP/1.0\r\n");
+    fwrite($socket, "User-Agent: Socket Example\r\n");
+    fwrite($socket, "HOST: $url\r\n");
+    fwrite($socket, "Content-type: application/x-www-form-urlencoded\r\n");
+    fwrite($socket, "Content-length: " . (strlen($post_string) + 8) . '\r\n');
+    fwrite($socket, "Accept:*/*\r\n");
+    fwrite($socket, "\r\n");
+    if ($post_string != '' ){
+        fwrite($socket, "mypost=$post_string\r\n");
+    }
+    fwrite($socket, "\r\n");
+    $header = "";
+    while ($str = trim(fgets($socket, 4096))) {
+        $header .= $str;
+    }
+    $data = "";
+    while (!feof($socket)) {
+        $data .= fgets($socket, 4096);
+    }
+    return $data;
+}
+
 
 /**
-* file_get_contents·½Ê½»ñÈ¡Ô¶³ÌÎÄ¼ş
-* @param $url ¿ÉÒÔÊÇ´ø²ÎÊıµÄurl
-* @param $timeout ÉèÖÃ³¬Ê±
-* @param $params ²ÎÊı×Ö·û´®,Èça=2&b=3,Í¨³£ÓÃhttp_build_queryÉú³É
-* @param $method 'GET','POST','' Îª¿ÕµÈ±íÊ¾²»¶Ô²ÎÊı´¦Àí
-* @param $times
+ * request_by_curl~~Curlç‰ˆæœ¬
+ * @example:
+    $post_string = "app=request&version=beta";
+    request_by_curl('http://facebook.cn/restServer.php', $post_string);
+ * http_build_query(ARRAY)
+ */
+function request_by_curl($url, $post_string)
+{
+    // making string from $data: urlencode, string -> http_build_query(ARRAY)
+    //$posts = "";
+    //foreach($post_data as $key=>$value)
+       // $posts.="$key=".urlencode($value)."&";
+
+    $ch = curl_init();
+    //curl_setopt($ch, CURLOPT_POST, 1);
+    //curl_setopt($ch, CURLOPT_HEADER, 0);
+    curl_setopt($ch, CURLOPT_URL, $url);
+    curl_setopt($ch, CURLOPT_POSTFIELDS, $post_string);  // CURLOPT_POSTFIELDS
+    //curl_setopt($curl, CURLOPT_POSTFIELDS, http_build_query($post));  //$post=array
+    //ä¸ºäº†æ”¯æŒcookie
+    curl_setopt($ch, CURLOPT_COOKIEJAR, 'cookie.txt');
+    //curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+    $data = curl_exec($ch);
+    curl_close($ch);
+    return $data;
+}
+
+
+/**
+ * request_by_file
+ * @called: file_get_contents
+ * @example:
+    $post_string = "app=request&version=beta";
+    request_by_file('http://facebook.cn/restServer.php', $post_string);
+ */
+function request_by_file($url, $post_string)
+{
+    $context = array(
+        'http' => array(
+            'method' => 'POST',
+            'header' => 'Content-type: application/x-www-form-urlencoded' .
+                        '\r\n'.'User-Agent : Jimmy\'s POST Example beta' .
+                        '\r\n'.'Content-length:' . strlen($post_string) + 8,
+            'content' => 'mypost=' . $post_string)
+        );
+    $stream_context = stream_context_create($context);
+    $data = file_get_contents($url, false, $stream_context);
+    return $data;
+}
+
+/**
+* request_by_file2
+* @param
+    $url å¯ä»¥æ˜¯å¸¦å‚æ•°çš„url
+    $timeout è®¾ç½®è¶…æ—¶
+    $params å‚æ•°å­—ç¬¦ä¸²,å¦‚a=2&b=3,é€šå¸¸ç”¨http_build_queryç”Ÿæˆ
+    $method 'GET','POST','' ä¸ºç©ºç­‰è¡¨ç¤ºä¸å¯¹å‚æ•°å¤„ç†
+    $times
+* @called:  file_get_contents
 * @return string|boolean
 **/
-function get_remote_file($url = '', $timeout = 10, $params = '', $method = 'GET', $times = 3) {
-    //Ìá½»·½Ê½
+function request_by_file2($url = '', $timeout = 10, $params = '', $method = 'GET', $times = 3) {
+    //æäº¤æ–¹å¼
     $method =   strtoupper($method);
-    //»ù±¾Ñ¡Ïî
+    //åŸºæœ¬é€‰é¡¹
     $opts['http'] = array(
                         'method'=>$method,
-                        'timeout'=>$timeout,//ÉèÖÃ³¬Ê±Ê±¼ä(Ãë)
+                        'timeout'=>$timeout,//è®¾ç½®è¶…æ—¶æ—¶é—´(ç§’)
                     );
 
-    //ÅĞ¶Ï²ÎÊıÌá½»·½Ê½
+    //åˆ¤æ–­å‚æ•°æäº¤æ–¹å¼
     if(!empty($params)) {
         if('POST' == $method) {
             $opts['http']['content']    =   $params;
@@ -118,7 +154,7 @@ function get_remote_file($url = '', $timeout = 10, $params = '', $method = 'GET'
     $context = stream_context_create($opts);
     $cnt = 0;
     $file = false;
-    //³¢ÊÔ$times´Î»ñÈ¡Ô¶³ÌÎÄ¼ş
+    //å°è¯•$timesæ¬¡è·å–è¿œç¨‹æ–‡ä»¶
     while($cnt < $times && ($file = file_get_contents($url, false, $context)) === false)$cnt++;
 
     return $file;
