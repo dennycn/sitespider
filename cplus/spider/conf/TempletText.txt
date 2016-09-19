@@ -1,0 +1,182 @@
+!$NUMB=0
+#templetDead=true
+0list_b=<!-- 正文块 begin -->
+0list_e=<!-- 正文内容 end -->
+0date_b=<span id="pub_date">
+0date_e=</span>
+0date_f=yyyy年mm月dd日hh:mm
+0media_b=<span id="media_name">
+0media_e=</span>
+1text_b=<p>
+0text_e=<div 
+/$NUME=0
+#以上为新浪模板的正文模板0
+#以下为东方财富网的正文模板
+!$NUMB=1
+0list_b=<!--正文内容开始-->
+0list_e=<!--正文内容结束-->
+0MediaUrl_b=<span class="blue">
+0MediaUrl_e=>
+0go_b=&nbsp
+0go_e=&nbsp
+0go_b=&nbsp
+0go_e=&nbsp
+0media_b=;
+0media_e=<
+0text_b=<!--info content start-->
+0text_e=<div style
+/$NUME=1
+!$NUMB=2
+0list_b=<!--left start-->
+0list_e=<!--left end -->
+0title_b=<h1>
+0title_e=</h1>
+0media_b=<span class="blue">
+0media_e=</span>
+0date_b=&nbsp;&nbsp;
+0date_e=&nbsp;
+0date_f=yyyy-mm-dd hh:mm
+0text_b=<span style="font-size: 16px;">
+0text_e=</div>
+/$NUME=2
+#2为东方财富网的论坛的一个模板
+!$NUMB=3
+0list_b=<!--mainleft begin -->
+0list_e=<!--mainleft end -->
+0title_b=<h1>
+0title_e=</h1>
+0date_b=<span class="gray">
+0date_e=</span>
+0date_f=yyyy年mm月dd日hh:mm
+0media_b=<span class="blue">
+1media_e=target="_blank">
+0text_b=<div class="concent" id="artibody">
+0text_e=<div class="clear"></div>
+/$NUME=3
+!$NUMB=4
+0list_b=<div id="contentA" class="area">
+0list_e=<div class="blank8"></div>
+0title_b=<h1>
+0title_e=</h1>
+0media_b=<span id="media_span">
+0media_e=</span>
+0date_b=<div class="r">
+0date_e=</div>
+0date_f=yyyy年mm月dd日hh:mm
+0list_b=<!-- 正文 st -->
+1list_e=<!-- 正文 end -->
+0text_b=<div class="text clear" id="contentText">
+0text_e=<!-- 正文 end -->
+/$NUME=4
+!$NUMB=5
+0title_b=<!--jrj_final_title_start-->
+0title_e=<!--jrj_final_title_end-->
+0date_b=<!--jrj_final_date_start-->
+0date_e=<!--jrj_final_date_end-->
+0date_f=yyyy年mm月dd日hh:mm
+0media_b=<!--jrj_final_source_start-->
+0media_e=<!--jrj_final_source_end-->
+0text_b=<!--jrj_final_context_start-->
+0text_e=<!--jrj_final_context_end-->
+/$NUME=5
+######################
+!$NUMB=6
+0title_b=<div id="title">
+0title_e=</div>
+0date_b=www.cnfol.com</a>　
+1date_e=<
+0date_f=yyyy年mm月dd日hh:mm
+0text_b=<div id="__content" class="content">
+0text_e=<div class="Statement">
+/$NUME=6
+######################
+!$NUMB=7
+0media_b=<span style="margin-left: 10px;">来源：</span><span> 
+0media_e=</span>
+0text_b=<div class="fnomal" id="IDNewsDtail">
+0text_e=</div>
+/$NUME=7
+######################
+!$NUMB=8
+0title_b=<h2>
+0title_e=</h2>
+0date_b=<div class="articleTitle">
+0date_e=<
+0date_f=yyyy-mm-dd hh:mm
+0media_b=<span class="font_blue">
+0media_e=</span>
+1text_b=<div class="article" id="art"
+0text_e=</div>
+!$NUME=8
+######################
+!$NUMB=9
+0title_b=<h1>
+0title_e=</h1>
+0date_b=时间
+0date_e=&
+0date_f=yyyy年mm月dd日hh:mm
+0text_b=<!--newstext-->
+0text_e=<!--/newstext-->
+!$NUME=9
+######################
+######################
+!$NUMB=10
+0title_b=<span id="ArticleTitle">
+0title_e=</span>
+0date_b=<div id="ArticleInfo" style=" text-align:center;">
+0date_e=&
+0date_f=yyyy-mm-dd hh:mm
+0text_b=<span id='ArticleContent'>
+0text_e=</span>
+!$NUME=10
+######################
+!$NUMB=11
+0title_b=<font class="maintitle">
+0title_e=</font>
+0date_b=<font class="quanwen">
+0date_e=</font>
+0date_f=yyyy年mm月dd日hh:mm
+0text_b=<td style="font-size:14px;padding:10px">
+0text_e=</td>
+!$NUME=11
+######################
+!$NUMB=12
+0title_b=<h1>
+0title_e=</h1>
+0date_b=<div class="text">
+0date_e=<
+0date_f=yyyy年mm月dd日hh:mm
+0text_b=<div id="clickeye_content">
+0text_e=</div
+!$NUME=12
+#######################
+!$NUMB=13
+0title_b=<h1 id="artical_topic">
+0title_e=</h1>
+0date_b=<span id="publish_time">
+0date_e=</span>
+0date_f=yyyy年mm月dd日hh:mm
+0text_b=<DIV id=artical_real>
+0text_e=</DIV>
+!$NUME=13
+######################
+######################
+!$NUMB=14
+0title_b=<h1>
+0title_e=</h1>
+0date_b=<span class="art_infotitle">时间</span>
+0date_e=</span>
+0date_f=yyyy-mm-dd hh:mm
+0text_b=<div class="art_text">
+0text_e=</div>
+/$NUME=14
+######################
+!$NUMB=15
+0title_b=<title>
+0title_e=</title
+0date_b=研究报告上传时间：<B>
+0date_e=</B>
+0date_f=yyyy-mm-dd hh:mm
+0text_b=<font color="#000000" style="font-size:12px;">
+0text_e=</table>
+/$NUME=15

@@ -1,0 +1,14 @@
+README
+
+use listpage and detailpage.
+1 monitor listpage and extract url
+2 fecth detailpage and extract content
+3 
+
+# work
+listpage: 657 can download all in 7 mins
+detailpage: 10,000 every day.
+
+ChangeLog
+version 1.0 2010-6-20
+ init version from spider of ihandy branch 

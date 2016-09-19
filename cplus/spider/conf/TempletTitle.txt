@@ -1,0 +1,334 @@
+!$NUMB=0
+#http://roll.finance.sina.com.cn/finance/zq1/gsjsy/index.shtml
+#http://roll.finance.sina.com.cn/finance/jj4/jjcc/index.shtml
+0list_b=<!-- 列表 begin -->
+0list_e=<!-- 列表 end -->
+5nrec_b=<li>
+0nrec_e=</li>
+0nurl_b=a href="
+0nurl_e="
+0title_b=_blank">
+0title_e=</a>
+/$NUME=0
+!$NUMB=1
+#http://finance.sina.com.cn/column/gujiayidong.shtml
+0list_b=<td width=476>
+0list_e=<tr bgcolor=#3C83C9><td width=25 height=25 align=center>
+5nrec_b=<td width=458 class=l18>
+0nrec_e=height=6></td>
+0nurl_b=<a href=
+0nurl_e= class
+0title_b=_blank>
+0title_e=</a>
+/$NUME=1
+!$NUMB=2
+#http://finance.sina.com.cn/topcolumn_news/column/gupiao.html
+0list_b=<td width=476>
+0list_e=<tr bgcolor=#3C83C9><td width=25 height=25 align=center>
+5nrec_b=<tr>
+0nrec_e=</tr>
+0nurl_b=<a href=
+0nurl_e= class
+0title_b=_blank>
+0title_e=</a>
+/$NUME=2
+!$NUMB=3
+#http://finance.sina.com.cn/stock/zldx.html
+0list_b=<!-- 新闻列表 : begin-->
+0list_e=<!-- 新闻列表 : end -->
+5nrec_b=<tr><td class=
+0nrec_e=</tr>
+0nurl_b=<a href=
+0nurl_e= class
+0title_b=_blank>
+0title_e=</a>
+/$NUME=3
+!$NUMB=4
+0list_b=<!--开始：table 1-->
+0list_e=<!--结束：table 1-->
+5nrec_b=<li
+0nrec_e=</font>
+0nurl_b=<a href=
+0nurl_e= target
+0title_b=_blank>
+0title_e=</a>
+/$NUME=4
+!$NUMB=5
+0list_b=item:[
+0list_e=};
+5nrec_b={
+0nrec_e=},
+0title_b=title:"
+0title_e=",
+0nurl_b=link:"
+0nurl_e=",
+/$NUME=5
+!$NUMB=6
+1list_b=<LI>
+0list_e=</ul>
+5nrec_b=<LI>
+0nrec_e=<BR>
+0nurl_b=<A href=
+0nurl_e= target
+0title_b=blank>
+0title_e=</A>
+/$NUME=6
+#以上为新浪网址的列表页模板0-6
+#以下为新东方财富网址的模板7
+!$NUMB=7
+0list_b=<div class="rightText"
+0list_e=<script>_cpyno="c1"</script>
+5nrec_b=<li>
+0nrec_e=</li>
+0date_b="middate">
+0date_e=</span>
+0date_f=yyyy-mm-dd hh:mm
+0go_b=[<a target="_blank"
+0go_e=</a>]
+0nurl_b=href="
+0nurl_e="
+0title_b=>
+0title_e=</a>
+/$NUME=7
+!$NUMB=8
+0list_b=<div style="width:8%;" class="t1">发表日期</div>
+0list_e=<div class="b1"></div><div  class="b2">
+5nrec_b=class=zhehang1>
+0nrec_e=target="_blank"
+0nurl_b=href="
+0nurl_e="
+0nurl_f=http://hkba.eastmoney.com
+/$NUME=8
+#以上为东方财富网的模板
+#以下为和讯网站的模板
+!$NUMB=9
+0list_b=<!--1 begin -->
+0list_e=<div class="listdh">
+5nrec_b=<li><span class=
+1nrec_e='  target="_blank">
+0nurl_b=<a href='
+0nurl_e='
+/$NUME=9
+#以上为和讯网站的模板
+#以下为搜狐网站的模板
+!$NUMB=10
+0list_b=<div class="main area">
+0list_e=</ul>
+5nrec_b=<li>
+0nrec_e=</li>
+0nurl_b=<a href='
+0nurl_e='
+/$NUME=10
+!$NUMB=11
+0list_b=<ul class="ullab">
+0list_e=</u1>
+5nrec_b=<li>
+0nrec_e=</li>
+0nurl_b=<a href="
+0nurl_e="
+/$NUME=11
+!$NUMB=12
+0list_b=<div class="tit2d">
+0list_e=</ul>
+5nrec_b=<li>
+0nrec_e=</li>
+0nurl_b=<a href="
+0nurl_e="
+/$NUME=12
+!$NUMB=13
+0list_b=<ul class="ls1">
+0list_e=</ul>
+5nrec_b=<li>
+0nrec_e=</li>
+0nurl_b=<a href="
+0nurl_e="
+/$NUME=13
+!$NUMB=14
+0list_b=<div class="rt">
+0list_e=</ul>
+5nrec_b=<li>
+0nrec_e=</li>
+0nurl_b=<a href="
+0nurl_e="
+/$NUME=14
+!$NUMB=15
+0list_b=<ul class="ls2">
+0list_e=</ul>
+5nrec_b=<li>
+0nrec_e=</li>
+0nurl_b=<a href="
+0nurl_e="
+/$NUME=15
+!$NUMB=16
+0list_b=<ul class="l1">
+0list_e=</ul>
+5nrec_b=<li>
+0nrec_e=</li>
+0nurl_b=<a href="
+0nurl_e="
+/$NUME=16
+!$NUMB=17
+0list_b=<ul class="ull">
+0list_e=</ul>
+5nrec_b=<li>
+0nrec_e=</li>
+0nurl_b=<a href="
+0nurl_e="
+/$NUME=17
+!$NUMB=18
+0list_b=<ul class="nlist">
+0list_e=</ul>
+5nrec_b=<li>
+0nrec_e=</li>
+0nurl_b=<a href="
+0nurl_e="
+/$NUME=18
+!$NUMB=19
+0list_b=<ul class="lt3">
+0list_e=</ul>
+5nrec_b=<li>
+0nrec_e=</li>
+0nurl_b=<a href="
+0nurl_e="
+/$NUME=19
+!$NUMB=20
+0list_b=<ul class="newsl">
+0list_e=</ul>
+5nrec_b=<li>
+0nrec_e=</li>
+0nurl_b=<a href="
+0nurl_e="
+/$NUME=20
+!$NUMB=21
+0list_b=<ul class="ulab">
+0list_e=</ul>
+5nrec_b=<li>
+0nrec_e=</li>
+0nurl_b=<a href="
+0nurl_e="
+/$NUME=21
+!$NUMB=22
+0list_b=<ul class="dot">
+0list_e=</ul>
+5nrec_b=<li>
+0nrec_e=</li>
+0nurl_b=<a href="
+0nurl_e="
+/$NUME=22
+#####################
+!$NUMB=23
+0list_b=<div id="left" style="overflow:hidden;">
+0list_e=</div>
+5nrec_b=<LI>
+0nrec_e=</LI>
+0nurl_b=<a href='
+0nurl_e='
+/$NUME=23
+#####################
+!$NUMB=24
+5nrec_b=<Item
+0nrec_e=</Item>
+0nurl_b=href="
+0nurl_e="
+0title_b=<Title><![CDATA[
+0title_e=]]></Title>
+0date_b=<Date>
+0date_e=</Date>
+0date_f=yyyy-mm-dd hh:mm
+/$NUME=24
+#####################
+!$NUMB=25
+0list_b=<ul>
+0list_e=</ul>
+5nrec_b=<li>
+0nrec_e=</li>
+0nurl_b=<a href="
+0nurl_e="
+0nurl_f=http://www.topcj.com
+/$NUME=25
+#####################
+!$NUMB=26
+5nrec_b=<table width=100% cellspacing=1 cellpadding=1>
+0nrec_e=</table>
+0nurl_b=<a href='
+0nurl_e='
+0nurl_f=SUBURL
+/$NUME=26
+#####################
+!$NUMB=27
+0list_b=<table border="0" width="800" cellpadding=0 cellspacing=0>
+0list_e=</table>
+5nrec_b=<dt>
+0nrec_e=</dt>
+0nurl_b=<a href="
+0nurl_e="
+0nurl_f=SUBURL
+/$NUME=27
+!$NUMB=28
+0list_b=<table border="0" width="760" cellpadding=0 cellspacing=0>
+0list_e=</table>
+5nrec_b=<dt>
+0nrec_e=</dt> 
+0nurl_b=<a href="
+0nurl_e="
+0nurl_f=SUBURL
+/$NUME=28
+#####################
+!$NUMB=29
+0list_b=<div class="contentA" style="height: 1364px">
+0list_e=<div class="contentC" style="height: 51px; text-align:center; padding-top:21px;">
+5nrec_b=<ul>
+0nrec_e=</ul>
+0nurl_b=a href="
+0nurl_e="
+/$NUME=29
+#####################
+!$NUMB=30
+0list_b=<table border="0" cellSpacing="0" cellPadding="2" width="98%" align="center">
+0list_e=<div style="width:770;background-color:#6E6458; font-size:12px" align="center">
+5nrec_b=<td class="td-text">
+0nrec_e=<asp:label ID="itemlinkname">
+0nurl_b=href='/
+0nurl_e='
+0nurl_f=SUBURL
+/$NUME=30
+#####################
+!$NUMB=31
+0list_b=<div id="listitem">
+0list_e=</div>
+5nrec_b=<li>
+0nrec_e=</li>
+0nurl_b=<a href="
+0nurl_e="
+0nurl_f=DOT
+/$NUME=31
+#####################
+!$NUMB=32
+0list_b="<div class="list03">"
+0list_e=</div>
+5nrec_b=<li>
+0nrec_e=</li>
+0nurl_b=<a href="
+0nurl_e="
+/$NUME=32
+#####################
+#####################
+!$NUMB=33
+0list_b=<ul class="list4">
+0list_e=</div>
+5nrec_b=<li
+0nrec_e=</li>
+0nurl_b=<a href="
+0nurl_e="
+0nurl_f=DOT
+/$NUME=33 
+#####################
+!$NUMB=34
+0list_b=<table width=100% height=30 border=0 cellpadding=0 cellspacing=0> 
+0list_e=</table>
+5nrec_b=<tr
+0nrec_e=</tr
+0nurl_b=<a href='
+0nurl_e='
+0nurl_f=http://www.microbell.com/
+/$NUME=34
